@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+import kr.or.connect.bookserver.persistence.BookDao;
+
 public class BookLauncher {
 
 	public static void main(String[] args) {
@@ -16,10 +18,8 @@ public class BookLauncher {
 		dataSource.setUsername("sa");
 		dataSource.setPassword("sa");
 		
-		NamedParameterJdbcTemplate jdbc = new NamedParameterJdbcTemplate(dataSource);
-		String sql = "SELECT COUNT(*) FROM book";
-		Map<String, Object> params = Collections.emptyMap();
-		Integer count = jdbc.queryForObject(sql, params, Integer.class);
+		BookDao dao = new BookDao(dataSource);
+		int count = dao.countBooks();
 		System.out.println(count);
 	}
 
