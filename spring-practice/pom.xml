@@ -37,9 +37,6 @@
 					<arguments>
 						<argument>-browser</argument>
 					</arguments>
-					 <argLine>
-            			--illegal-access=permit
-        			</argLine>
 				</configuration>
 			</plugin>
 		</plugins>
