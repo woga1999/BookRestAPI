@@ -1,13 +1,12 @@
 package kr.or.connect.bookserver.persistence;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -28,20 +27,11 @@ public class BookDao {
 		Map<String, Object> params = Collections.emptyMap();
 		return jdbc.queryForObject(COUNT_BOOK, params, Integer.class);
 	}
-	
+	RowMapper<Book> rowMapper = BeanPropertyRowMapper.newInstance(Book.class);
+	//BeanPropertyRowMapper.newInstance()로 생성한 객체는 멀티스레드에서 접근해도 안전하기 때문에 아래와 같이 멤버 변수로 선언하고
+	//바로 초기화를 해도 무방하다.
 	public Book selelctById(Integer id) {
-		RowMapper<Book> rowMapper = new RowMapper<Book>() {
-			@Override
-			public Book mapRow(ResultSet rs, int i) throws SQLException {
-		                Book book = new Book();
-				book.setId(rs.getInt("id"));
-				book.setTitle(rs.getString("title"));
-				book.setAuthor(rs.getString("author"));
-				book.setPages((Integer) rs.getObject("pages"));
-				return book;
-			}
-		};
-
+		
 		Map<String, Object> params = new HashMap<>();
 		params.put("id", id);
 		return jdbc.queryForObject(SELECT_BY_ID, params, rowMapper);
