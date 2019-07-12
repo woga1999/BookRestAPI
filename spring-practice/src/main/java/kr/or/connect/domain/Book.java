@@ -5,7 +5,16 @@ public class Book {
 	private String author;
 	private String title;
 	private Integer pages;
-
+	
+	public Book() {
+		
+	}
+	public Book(String title, String author, Integer pages) {
+		this.title = title;
+		this.author = author;
+		this.pages = pages;
+	}
+	
 	public Integer getId() {
 		return id;
 	}

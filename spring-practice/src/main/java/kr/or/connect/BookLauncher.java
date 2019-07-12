@@ -17,6 +17,12 @@ public class BookLauncher {
 		
 		Book book = dao.selelctById(1);
 		System.out.println(book);
+		
+		Book book2 = new Book("성호사설", "이익",82);
+		Integer newId = dao.insert(book2);
+		System.out.println(newId);
+		System.out.println(dao.selelctById(newId));
+		
 		context.close();
 	}
 }
