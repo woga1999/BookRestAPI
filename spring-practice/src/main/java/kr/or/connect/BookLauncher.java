@@ -15,13 +15,13 @@ public class BookLauncher {
 		int count = dao.countBooks();
 		System.out.println(count);
 		
-		Book book = dao.selelctById(1);
+		Book book = dao.selectById(1);
 		System.out.println(book);
 		
-		Book book2 = new Book("º∫»£ªÁº≥", "¿Ã¿Õ",82);
+		Book book2 = new Book("ÎÑ§Ïù¥Î≤Ñ Java", "ÍπÄÍ∞ïÏÇ∞", 512);
 		Integer newId = dao.insert(book2);
 		System.out.println(newId);
-		System.out.println(dao.selelctById(newId));
+		System.out.println(dao.selectById(newId));
 		
 		context.close();
 	}

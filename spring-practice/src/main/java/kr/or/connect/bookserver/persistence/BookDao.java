@@ -42,9 +42,9 @@ public class BookDao {
 		return jdbc.queryForObject(COUNT_BOOK, params, Integer.class);
 	}
 	RowMapper<Book> rowMapper = BeanPropertyRowMapper.newInstance(Book.class);
-	//BeanPropertyRowMapper.newInstance()·Î »ı¼ºÇÑ °´Ã¼´Â ¸ÖÆ¼½º·¹µå¿¡¼­ Á¢±ÙÇØµµ ¾ÈÀüÇÏ±â ¶§¹®¿¡ ¾Æ·¡¿Í °°ÀÌ ¸â¹ö º¯¼ö·Î ¼±¾ğÇÏ°í
-	//¹Ù·Î ÃÊ±âÈ­¸¦ ÇØµµ ¹«¹æÇÏ´Ù.
-	public Book selelctById(Integer id) {
+	//BeanPropertyRowMapper.newInstance()ë¡œ ìƒì„±í•œ ê°ì²´ëŠ” ë©€í‹°ìŠ¤ë ˆë“œì—ì„œ ì ‘ê·¼í•´ë„ ì•ˆì „í•˜ê¸° ë•Œë¬¸ì— ì•„ë˜ì™€ ê°™ì´ ë©¤ë²„ ë³€ìˆ˜ë¡œ ì„ ì–¸í•˜ê³ 
+	//ë°”ë¡œ ì´ˆê¸°í™”ë¥¼ í•´ë„ ë¬´ë°©í•˜ë‹¤.
+	public Book selectById(Integer id) {
 		
 		Map<String, Object> params = new HashMap<>();
 		params.put("id", id);
