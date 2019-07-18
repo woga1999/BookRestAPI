@@ -2,6 +2,8 @@ package kr.or.connect.bookserver.presentation;
 
 import java.util.Collection;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,6 +23,7 @@ import kr.or.connect.domain.Book;
 @RequestMapping("/api/books")
 public class BookController {
 	private final BookService service;
+	private final Logger log = LoggerFactory.getLogger(BookController.class);
 	
 	@Autowired
 	public BookController(BookService service) {
@@ -37,11 +40,11 @@ public class BookController {
 		return service.findById(id);
 	}
 	
-	@PostMapping
-	@ResponseStatus(HttpStatus.CREATED)
-	Book create(@RequestBody Book book) {
-		return service.create(book);
-	}
+//	@PostMapping
+//	@ResponseStatus(HttpStatus.CREATED)
+//	Book create(@RequestBody Book book) {
+//		return service.create(book);
+//	}
 	@PutMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	void update(@PathVariable Integer id, @RequestBody Book book) {
@@ -53,5 +56,12 @@ public class BookController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	void delete(@PathVariable Integer id) {
 		service.delete(id);
+	}
+	@PostMapping
+	@ResponseStatus(HttpStatus.CREATED)
+	Book create(@RequestBody Book book) {
+		Book newBook = service.create(book);
+		log.info("book created : {}" , newBook);
+		return book;
 	}
 }

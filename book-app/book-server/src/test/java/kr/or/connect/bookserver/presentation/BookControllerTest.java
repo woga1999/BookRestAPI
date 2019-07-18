@@ -1,15 +1,18 @@
 package kr.or.connect.bookserver.presentation;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -20,8 +23,7 @@ import org.springframework.web.context.WebApplicationContext;
 import kr.or.connect.bookserver.BookServerApplication;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = BookServerApplication.class)
-@WebAppConfiguration
+@SpringBootTest
 public class BookControllerTest {
 	
 	@Autowired
@@ -41,7 +43,7 @@ public class BookControllerTest {
 
 		mvc.perform(
 			post("/api/books/")
-				.contentType(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON +";charset=utf-8")
 				.content(requestBody)
 			)
 			.andExpect(status().isCreated())
