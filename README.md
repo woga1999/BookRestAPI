@@ -1,6 +1,6 @@
 # Spring-Practice
 
-# About Spring
+-개인 공부용
 
 [Spring 참조 문서](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/)
 
