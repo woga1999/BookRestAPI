@@ -1,6 +1,6 @@
 # Spring-Practice
 
--개인 공부용
+-개인 공부 백업용
 
 [Spring 참조 문서](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/)
 
@@ -235,6 +235,8 @@ POST, GET, PUT, DELETE 이 4가지의 Method를 가지고 CRUD를 할 수 있다
 REST 개념 및 스타일 참조: https://meetup.toast.com/posts/92
 
 
+### TEST
 
+![1563891266495](C:\Users\woga1\AppData\Roaming\Typora\typora-user-images\1563891266495.png)
 
 https://www.edwith.org/boostcamp_web/joinLectures/9924
