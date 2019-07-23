@@ -237,6 +237,6 @@ REST 개념 및 스타일 참조: https://meetup.toast.com/posts/92
 
 ### TEST
 
-![1563891266495](C:\Users\woga1\AppData\Roaming\Typora\typora-user-images\1563891266495.png)
+![1563891266495](./test.PNG)
 
 https://www.edwith.org/boostcamp_web/joinLectures/9924
